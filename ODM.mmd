@@ -9,7 +9,7 @@ graph LR
 %% Subgraph Stages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-subgraph dataset_stage
+subgraph dataset_stage["`**dataset_stage**`"]
     bg_removal:::options
     camera-lens:::options
     cameras:::options
@@ -23,9 +23,9 @@ subgraph dataset_stage
     video_resolution:::options
 end
 
-style Split color:#b0e760
 
-subgraph Split
+
+subgraph Split["`**Split**`"]
     sm_cluster:::options
     sm_no_align:::options
     split:::options
@@ -33,7 +33,7 @@ subgraph Split
     split_overlap:::options
 end
 
-subgraph OpenSFM
+subgraph OpenSFM["`**OpenSFM**`"]
     feature_quality:::options
     feature_type:::options
     force_gps:::options
@@ -54,12 +54,12 @@ subgraph OpenSFM
     use_hybrid_bundle_adjustment:::options
 end
 
-subgraph openmvs
+subgraph openmvs["`**openmvs**`"]
     pc_filter:::options
     pc_skip_geometric:::options
 end
 
-subgraph odm_filterpoints
+subgraph odm_filterpoints["`**odm_filterpoints**`"]
     auto_boundary:::options
     auto_boundary_distance:::options
     boundary:::options
@@ -67,13 +67,13 @@ subgraph odm_filterpoints
     pc_sample:::options
 end
 
-subgraph odm_meshing
+subgraph odm_meshing["`**odm_meshing**`"]
     mesh_octree_depth:::options
     mesh_size:::options
     skip_3dmodel:::options
 end
 
-subgraph mvs_texturing
+subgraph mvs_texturing["`**mvs_texturing**`"]
     gltf:::options
     texturing_keep_unseen_faces:::options
     texturing_single_material:::options
@@ -82,7 +82,7 @@ subgraph mvs_texturing
 end
 
 
-subgraph odm_georeferencing
+subgraph odm_georeferencing["`**odm_georeferencing**`"]
     align:::options
     crop:::options
     pc_classify:::options
@@ -93,7 +93,7 @@ subgraph odm_georeferencing
     pc_rectify:::options
 end
 
-subgraph odm_dem
+subgraph odm_dem["`**odm_dem**`"]
     cog:::options
     dem_decimation:::options
     dem_euclidean_map:::options
@@ -108,7 +108,7 @@ subgraph odm_dem
     tiles:::options
 end
 
-subgraph odm_orthophoto
+subgraph odm_orthophoto["`**odm_orthophoto**`"]
     build_overviews:::options
     orthophoto_compression:::options
     orthophoto_cutline:::options
@@ -119,11 +119,11 @@ subgraph odm_orthophoto
     skip_orthophoto:::options
 end
 
-subgraph odm_report
+subgraph odm_report["`**odm_report**`"]
     skip-report:::options
 end
 
-subgraph odm_postprocess
+subgraph odm_postprocess["`**odm_postprocess**`"]
     3d-tiles:::options
     copy_to:::options
 end
