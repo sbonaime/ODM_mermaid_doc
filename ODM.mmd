@@ -1,0 +1,167 @@
+%%{init: {'theme':'neutral','flowchart': { 'curve': 'basis' ,"defaultRenderer": "elk"}}}%%
+
+
+%% Style de curve bumpX
+
+graph TB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Stages 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+images{Dataset <br> Input Images<br>fa:fa-camera-retro}  
+Split(Split dataset ?):::stages
+Spliting(Spliting dataset ):::stages
+Dataset_stage(Dataset Stage):::stages
+OpenSFM:::stages
+openmvs(OpenMVS):::stages
+odm_filterpoints:::stages
+odm_meshing:::stages
+mvs_texturing:::stages
+odm_georeferencing:::stages
+odm_dem:::stages
+odm_orthophoto:::stages
+odm_report:::stages
+odm_postprocess:::stages
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Links
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+images --> Dataset_stage --> Split -- No ----> OpenSFM --> openmvs 
+openmvs --> odm_filterpoints --> odm_meshing --> mvs_texturing --> odm_georeferencing  
+odm_georeferencing --> odm_dem --> odm_orthophoto --> odm_report --> odm_postprocess
+
+%% Split yes
+%%Split -- Yes ----> Spliting -- Merge ----> OpenSFM_detect_features
+Split -- Yes ----> Spliting ----> OpenSFM
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Options 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% options for Dataset_stage
+bg_removal:::options --> Dataset_stage
+camera-lens:::options --> Dataset_stage
+cameras:::options --> Dataset_stage
+gcp:::options --> Dataset_stage
+geo:::options --> Dataset_stage
+gps_accuracy:::options --> Dataset_stage
+primary_band:::options --> Dataset_stage
+sky_removal:::options --> Dataset_stage
+use_exif:::options --> Dataset_stage
+video_limit:::options --> Dataset_stage
+video_resolution:::options --> Dataset_stage
+
+%% option for Split
+sm_cluster:::options --> Split
+sm_no_align:::options --> Split
+split:::options --> Split
+split_image_groups:::options --> Split
+split_overlap:::options --> Split
+
+%% options for openmvs
+
+pc_filter:::options --> openmvs
+pc_skip_geometric:::options --> openmvs
+
+
+%% options for OpenSFM
+feature_quality:::options --> OpenSFM
+feature_type:::options --> OpenSFM
+force_gps:::options --> OpenSFM
+ignore_gsd:::options --> OpenSFM
+matcher-neighbors:::options --> OpenSFM
+matcher_neighbors:::options --> OpenSFM
+matcher_order:::options --> OpenSFM
+matcher_type:::options --> OpenSFM
+min_num_features:::options --> OpenSFM
+pc_quality:::options --> OpenSFM
+radiometric_calibration:::options --> OpenSFM
+rolling_shutter:::options --> OpenSFM
+rolling_shutter_readout:::options --> OpenSFM
+sfm-algorithm:::options --> OpenSFM
+sfm_no_partial:::options --> OpenSFM
+skip_band_alignment:::options --> OpenSFM
+use_fixed_camera_params:::options --> OpenSFM
+use_hybrid_bundle_adjustment:::options --> OpenSFM
+
+
+%% options for odm_filterpoints
+auto_boundary:::options --> odm_filterpoints
+auto_boundary_distance:::options --> odm_filterpoints
+boundary:::options --> odm_filterpoints
+fast_orthophoto:::options --> odm_filterpoints
+pc_sample:::options --> odm_filterpoints
+
+
+%% options for odm_meshing 
+mesh_octree_depth:::options --> odm_meshing
+mesh_size:::options --> odm_meshing
+skip_3dmodel:::options --> odm_meshing
+
+%% options for mvs_texturing 
+gltf:::options --> mvs_texturing
+texturing_keep_unseen_faces:::options --> mvs_texturing
+texturing_single_material:::options --> mvs_texturing
+texturing_skip_global_seam_leveling:::options --> mvs_texturing
+use_3dmesh:::options --> mvs_texturing
+
+
+%% options for odm_georeferencing 
+align:::options --> odm_georeferencing
+crop:::options --> odm_georeferencing
+pc_classify:::options --> odm_georeferencing
+pc_copc:::options --> odm_georeferencing
+pc_csv:::options --> odm_georeferencing
+pc_ept:::options --> odm_georeferencing
+pc_las:::options --> odm_georeferencing
+pc_rectify:::options --> odm_georeferencing
+
+%% options for odm_dem 
+cog:::options --> odm_dem
+dem_decimation:::options --> odm_dem
+dem_euclidean_map:::options --> odm_dem
+dem_gapfill_steps:::options --> odm_dem
+dem_resolution:::options --> odm_dem
+dsm:::options --> odm_dem
+dtm:::options --> odm_dem
+smrf_scalar:::options --> odm_dem
+smrf_slope:::options --> odm_dem
+smrf_threshold:::options --> odm_dem
+smrf_window:::options --> odm_dem
+tiles:::options --> odm_dem
+
+%% options for odm_orthophoto 
+build_overviews:::options --> odm_orthophoto
+orthophoto_compression:::options --> odm_orthophoto
+orthophoto_cutline:::options --> odm_orthophoto
+orthophoto_kmz:::options --> odm_orthophoto
+orthophoto_no_tiled:::options --> odm_orthophoto
+orthophoto_png:::options --> odm_orthophoto
+orthophoto_resolution:::options --> odm_orthophoto
+skip_orthophoto:::options --> odm_orthophoto
+
+
+%% options for odm_report 
+skip-report:::options --> odm_report
+
+%% options for odm_postprocess 
+3d-tiles:::options --> odm_postprocess
+copy_to:::options --> odm_postprocess
+
+
+%% Styles
+
+%% Style for options
+classDef options stroke-width:4px,stroke-dasharray: 5,fill:#b0e760
+%% Style for stages
+classDef stages fill:#f96,stroke:#333,stroke-width:4px;
+
+
+style images fill:#f9f,stroke:#333,stroke-width:4px
